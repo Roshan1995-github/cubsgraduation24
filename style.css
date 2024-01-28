@@ -604,6 +604,24 @@ td:nth-child(3) {
   width: 100%;
 }
 
+.fs30 {
+  font-size: 30px;
+}
+
+.websiteStatusBtn {
+  border: none;
+  background-color: grey;
+  margin: 0px;
+  width: 100px;
+  height: 40px;
+  font-size: 20px;
+}
+
+.websiteStatusBtnSelected {
+  background-color: green;
+  color: white;
+}
+
 
 .deleteConfirmationModal {
   display: none;

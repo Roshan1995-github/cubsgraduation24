@@ -64,6 +64,12 @@
 	</div>
 
 	<div class="mainDiv">
+		<div>
+			<div class="fs30">Website Live</div>
+			<button name="websiteStatusBtn" onclick="setWebsiteStatus(1)" class="websiteStatusBtn">True</button>
+			<button name="websiteStatusBtn" onclick="setWebsiteStatus(0)"
+				class="websiteStatusBtn websiteStatusBtnSelected">False</button>
+		</div>
 		<table>
 			<thead id="adminTableHead">
 				<tr>
@@ -97,6 +103,36 @@
 		var modal1 = document.getElementById('infoModal');
 		var loadingDiv = document.getElementById('loadingDiv');
 
+		function setWebsiteStatus(status) {
+			const data = {
+				status: status
+			}
+			console.log(data)
+			fetch(databaseLink + '/api/set-website-status', {
+				method: 'POST', // or 'PUT'
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			})
+				.then(response => response.json())
+				.then(data => {
+					alert(data.message)
+
+					if (status) {
+						document.getElementsByName('websiteStatusBtn')[0].classList.add('websiteStatusBtnSelected')
+						document.getElementsByName('websiteStatusBtn')[1].classList.remove('websiteStatusBtnSelected')
+					} else {
+						document.getElementsByName('websiteStatusBtn')[1].classList.add('websiteStatusBtnSelected')
+						document.getElementsByName('websiteStatusBtn')[0].classList.remove('websiteStatusBtnSelected')
+					}
+				})
+				.catch((error) => {
+					console.error('Error:', error);
+					changeDisplay(loadingDiv, 'none')
+				});
+		}
+
 		function getData() {
 			changeDisplay(loadingDiv, 'block')
 			const data = {
@@ -119,6 +155,14 @@
 						window.location.replace("adminLogin.html")
 					} else {
 						mainData = data.seats
+						var websiteStatus = data.status
+						if (websiteStatus) {
+							document.getElementsByName('websiteStatusBtn')[0].classList.add('websiteStatusBtnSelected')
+							document.getElementsByName('websiteStatusBtn')[1].classList.remove('websiteStatusBtnSelected')
+						} else {
+							document.getElementsByName('websiteStatusBtn')[1].classList.add('websiteStatusBtnSelected')
+							document.getElementsByName('websiteStatusBtn')[0].classList.remove('websiteStatusBtnSelected')
+						}
 						var data = data.seats
 						var adminTableBody = document.getElementById('adminTableBody')
 						adminTableBody.innerHTML = ""

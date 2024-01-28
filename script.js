@@ -1,8 +1,8 @@
 console.log("imported")
 
 function databaseLink() {
-	// var databaseLink = 'http://cubsseatbooking.test';
-	var databaseLink = 'https://cubsgraduation24-14c569002e4e.herokuapp.com';
+	var databaseLink = 'http://cubsseatbooking.test';
+	// var databaseLink = 'https://cubsgraduation24-14c569002e4e.herokuapp.com';
 
 	return databaseLink;
 }
