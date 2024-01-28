@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-H">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="script.js"></script>
+	<title>Homepage</title>
+</head>
+
+<body>
+	<div class="loading" id="loadingDiv">
+		<img src="loading.gif">
+	</div>
+
+	<div class="modal" id="infoModal">
+		<div class="contactInfoDiv border">
+			<img src="logo.png">
+			<table>
+				<tbody id="tableBody">
+					<tr>
+						<td>Parent 1 Name <br>(as per IC)</td>
+						<td>:</td>
+						<td><input type="text" name="name" id="parent1"></td>
+					</tr>
+					<tr>
+						<td>Parent 2 Name <br>(as per IC)</td>
+						<td>:</td>
+						<td><input type="text" name="name" id="parent2"></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td>:</td>
+						<td><input type="text" name="email"></td>
+					</tr>
+					<tr>
+						<td>Centre</td>
+						<td>:</td>
+						<td><input type="text" name="cubscentre"></td>
+					</tr>
+					<tr>
+						<td>Child's Name <br>(as per IC)</td>
+						<td>:</td>
+						<td><input type="text" name="name"></td>
+					</tr>
+				</tbody>
+			</table>
+			<!-- <button onclick="addChild()">Add Child</button><br> -->
+			<button class="contactInfoDivPageSlctSeatBtn" onclick="selectSeatsBtn()">Select seats</button>
+		</div>
+	</div>
+
+	<div class="mainDiv">
+		<div class="i">
+			<div class="info">
+				<img src="logo.png" class="imgLogo">
+				<p class="goldText">Graduation Ceremony for the Class of 2023</p>
+				<p>Hello,</p>
+				<p>Parents Names :</p>
+				<div class="" id="parentsNameDiv"></div>
+				<p>Child's Name :</p>
+				<div class="" id="childrensNameDiv"></div>
+				<p>Seats :</p>
+				<div class="" id="chosenSeats"></div>
+				<button onclick="openDiv()" class="contactInfoDivPageSlctSeatBtn">BACK</button>
+				<button onclick="confirmBooking()" class="contactInfoDivPageSlctSeatBtn">CONFIRM</button>
+			</div>
+		</div>
+
+		<div class="chart border">
+			<div class="stage">
+				<p class="tableID stagefont">STAGE</p>
+			</div>
+			<div class="redCarpetH">
+				<p>ENTRANCE</p>
+			</div>
+			<div class="redCarpetV"></div>
+			<div class="tableDiv1">
+				<div class="seat seat1" id="1A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="1B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="1C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="1D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="1E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="1F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="1G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="1H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="1I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="1J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">1</p>
+				</div>
+			</div>
+			<div class="tableDiv2">
+				<div class="seat seat1" id="2A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="2B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="2C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="2D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="2E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="2F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="2G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="2H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="2I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="2J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">2</p>
+				</div>
+			</div>
+			<div class="tableDiv3">
+				<div class="seat seat1" id="3A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="3B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="3C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="3D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="3E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="3F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="3G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="3H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="3I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="3J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">3</p>
+				</div>
+			</div>
+			<div class="tableDiv4">
+				<div class="seat seat1" id="4A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="4B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="4C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="4D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="4E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="4F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="4G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="4H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="4I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="4J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">4</p>
+				</div>
+			</div>
+			<div class="tableDiv5">
+				<div class="seat seat1" id="5A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="5B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="5C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="5D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="5E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="5F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="5G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="5H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="5I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="5J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">5</p>
+				</div>
+			</div>
+			<div class="tableDiv6">
+				<div class="seat seat1" id="6A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="6B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="6C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="6D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="6E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="6F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="6G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="6H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="6I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="6J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">6</p>
+				</div>
+			</div>
+			<div class="tableDiv7">
+				<div class="seat seat1" id="7A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="7B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="7C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="7D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="7E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="7F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="7G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="7H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="7I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="7J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">7</p>
+				</div>
+			</div>
+			<div class="tableDiv8">
+				<div class="seat seat1" id="8A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="8B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="8C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="8D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="8E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="8F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="8G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="8H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="8I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="8J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">8</p>
+				</div>
+			</div>
+			<div class="tableDiv9">
+				<div class="seat seat1" id="9A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="9B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="9C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="9D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="9E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="9F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="9G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="9H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="9I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="9J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">9</p>
+				</div>
+			</div>
+			<div class="tableDiv10">
+				<div class="seat seat1" id="10A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="10B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="10C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="10D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="10E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="10F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="10G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="10H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="10I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="10J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">10</p>
+				</div>
+			</div>
+			<div class="tableDiv11">
+				<div class="seat seat1" id="11A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="11B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="11C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="11D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="11E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="11F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="11G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="11H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="11I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="11J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">11</p>
+				</div>
+			</div>
+			<div class="tableDiv12">
+				<div class="seat seat1" id="12A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="12B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="12C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="12D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="12E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="12F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="12G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="12H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="12I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="12J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">12</p>
+				</div>
+			</div>
+			<div class="tableDiv13">
+				<div class="seat seat1" id="13A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="13B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="13C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="13D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="13E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="13F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="13G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="13H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="13I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="13J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">13</p>
+				</div>
+			</div>
+			<div class="tableDiv14">
+				<div class="seat seat1" id="14A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="14B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="14C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="14D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="14E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="14F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="14G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="14H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="14I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="14J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">14</p>
+				</div>
+			</div>
+			<div class="tableDiv15">
+				<div class="seat seat1" id="15A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="15B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="15C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="15D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="15E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="15F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="15G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="15H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="15I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="15J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">15</p>
+				</div>
+			</div>
+			<div class="tableDiv16">
+				<div class="seat seat1" id="16A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="16B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="16C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="16D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="16E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="16F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="16G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="16H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="16I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="16J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">16</p>
+				</div>
+			</div>
+			<div class="tableDiv17">
+				<div class="seat seat1" id="17A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="17B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="17C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="17D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="17E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="17F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="17G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="17H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="17I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="17J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">17</p>
+				</div>
+			</div>
+			<div class="tableDiv18">
+				<div class="seat seat1" id="18A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="18B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="18C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="18D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="18E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="18F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="18G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="18H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="18I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="18J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">18</p>
+				</div>
+			</div>
+			<div class="tableDiv19">
+				<div class="seat seat1" id="19A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="19B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="19C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="19D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="19E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="19F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="19G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="19H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="19I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="19J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">19</p>
+				</div>
+			</div>
+			<div class="tableDiv20">
+				<div class="seat seat1" id="20A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="20B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="20C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="20D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="20E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="20F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="20G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="20H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="20I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="20J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">20</p>
+				</div>
+			</div>
+			<div class="tableDiv21">
+				<div class="seat seat1" id="21A" onclick="alreadyBooked()">A</div>
+				<div class="seat seat2" id="21B" onclick="alreadyBooked()">B</div>
+				<div class="seat seat3" id="21C" onclick="alreadyBooked()">C</div>
+				<div class="seat seat4" id="21D" onclick="alreadyBooked()">D</div>
+				<div class="seat seat5" id="21E" onclick="alreadyBooked()">E</div>
+				<div class="seat seat6" id="21F" onclick="alreadyBooked()">F</div>
+				<div class="seat seat7" id="21G" onclick="alreadyBooked()">G</div>
+				<div class="seat seat8" id="21H" onclick="alreadyBooked()">H</div>
+				<div class="seat seat9" id="21I" onclick="alreadyBooked()">I</div>
+				<div class="seat seat10" id="21J" onclick="alreadyBooked()">J</div>
+				<div class="table">
+					<p class="tableID">21</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script type="text/javascript">
+		var databaseLink = databaseLink();
+		// console.log(databaseLink)
+		var parentsNames = [];
+		// var childrensNames = [];
+		var childsName = "";
+		var selectedSeats = [];
+
+		var modal = document.getElementById('infoModal');
+		var loadingDiv = document.getElementById('loadingDiv');
+
+		var repeater = sessionStorage.getItem('repeater')
+		if (repeater == "true") {
+			parentsNames = sessionStorage.getItem('parentsNames').split(',')
+			// childrensNames = sessionStorage.getItem('childrensNames').split(',')
+			childsName = sessionStorage.getItem('childsName')
+
+
+			for (var i = 0; i < parentsNames.length; i++) {
+				var a = document.getElementsByName('name')[i]
+				a.value = parentsNames[i]
+			}
+
+			// for (var i = 0; i < childrensNames.length; i++) {
+			// 	var j = i + 2;
+			// 	var a = document.getElementsByName('name')[j]
+			// 	a.value = childrensNames[i];
+			// }
+			document.getElementsByName('name')[2].value = childsName
+
+			document.getElementsByName('email')[0].value = sessionStorage.getItem('email')
+			document.getElementsByName('cubscentre')[0].value = sessionStorage.getItem('cubscentre')
+		}
+
+		function loadAvailableSeats() {
+			changeDisplay(loadingDiv, 'block')
+			fetch(databaseLink + '/api/get-seats', {
+				method: 'GET', // or 'PUT'
+				headers: {
+					'Content-Type': 'application/json',
+				}
+			})
+				.then(response => response.json())
+				.then(data => {
+					// console.log('Success:', data);
+					if (data.status == false) {
+						window.location.replace("../cubsgraudation24/holding.html");
+					}
+					var data = data.bookedSeats;
+					if (data.length > 0) {
+						for (var i = 0; i < data.length; i++) {
+							var currentSeat = document.getElementById(data[i].seat_num);
+							currentSeat.style.background = "gold";
+							currentSeat.setAttribute('onclick', 'clickSeat(this);');
+						}
+					}
+					changeDisplay(loadingDiv, 'none')
+				})
+				.catch((error) => {
+					console.error('Error:', error);
+				});
+		}
+		loadAvailableSeats();
+
+		function selectSeatsBtn() {
+			if (document.getElementsByName('name')[0].value == "") {
+				alert('Must fill up Parent 1 Name');
+				return;
+			}
+			if (document.getElementsByName('name')[1].value == "") {
+				alert('Must fill up Parent 2 Name');
+				return;
+			}
+			if (document.getElementsByName('email')[0].value == "") {
+				alert('Please fill up Email. Confirmation of seat booking will be emailed to you.');
+				return;
+			}
+			var emailStatus = ValidateEmail(document.getElementsByName('email')[0]);
+			if (emailStatus == "false") {
+				return;
+			}
+			if (document.getElementsByName('cubscentre')[0].value == "") {
+				alert('Please fill up centre.');
+				return;
+			}
+
+			var parentsNameDiv = document.getElementById('parentsNameDiv')
+			var childrensNameDiv = document.getElementById('childrensNameDiv')
+
+			parentsNameDiv.innerHTML = ""
+			childrensNameDiv.innerHTML = ""
+			parentsNames = [];
+			// childrensNames = [];
+			childsName = document.getElementsByName('name')[2].value
+
+			changeDisplay(modal, 'none')
+
+			for (var i = 0; i < 2; i++) {
+				var name = document.getElementsByName('name')[i].value
+				parentsNames.push(name)
+
+				var p = document.createElement('P')
+				p.innerHTML = name
+				parentsNameDiv.appendChild(p)
+			}
+			// for (var j = i; j < document.getElementsByName('name').length; j++) {
+			// 	var name = document.getElementsByName('name')[j].value
+			// 	childrensNames.push(name)
+
+			// 	var p = document.createElement('P')
+			// 	p.innerHTML = name
+			// 	childrensNameDiv.appendChild(p)
+			// }
+			console.log(parentsNames)
+			// console.log(childrensNames)
+
+			var p = document.createElement('P')
+			p.innerHTML = childsName
+			childrensNameDiv.appendChild(p)
+			console.log(childsName)
+		}
+
+		function clickSeat(ele) {
+			var eleIdLength = ele.id.length
+			var tableID = ele.id.slice(0, eleIdLength - 1)
+			var seatNum = ele.id.slice(eleIdLength - 1, eleIdLength)
+			var chosenSeats = document.getElementById('chosenSeats')
+			var p = document.createElement('P')
+			var p1 = document.createElement('P')
+
+			if (selectedSeats.length != 0) {
+				for (var i = 0; i < selectedSeats.length; i++) {
+					var removeColor = document.getElementById(selectedSeats[i])
+					removeColor.style.background = "gold"
+				}
+				selectedSeats = []
+				chosenSeats.innerHTML = ""
+			}
+
+			var secondSeat = "";
+			var seatArray = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+			if (seatArray.indexOf(seatNum) % 2 == 0) {
+				secondSeat = tableID + seatArray[seatArray.indexOf(seatNum) + 1]
+				p.innerHTML = "Table " + tableID + " - Seat " + seatNum
+				p1.innerHTML = "Table " + tableID + " - Seat " + seatArray[seatArray.indexOf(seatNum) + 1]
+			} else {
+				secondSeat = tableID + seatArray[seatArray.indexOf(seatNum) - 1]
+				p.innerHTML = "Table " + tableID + " - Seat " + seatArray[seatArray.indexOf(seatNum) - 1]
+				p1.innerHTML = "Table " + tableID + " - Seat " + seatNum
+			}
+			var ele2 = document.getElementById(secondSeat)
+			ele.style.background = "blue"
+			ele2.style.background = "blue"
+
+			selectedSeats.push(ele.id)
+			selectedSeats.push(ele2.id)
+
+			chosenSeats.appendChild(p)
+			chosenSeats.appendChild(p1)
+			console.log(selectedSeats)
+		}
+
+		function openDiv() {
+			changeDisplay(modal, 'block')
+		}
+
+		// function addChild() {
+		// 	var tableBody = document.getElementById('tableBody')
+		// 	var tr = document.createElement('TR')
+		// 	var td1 = document.createElement('TD')
+		// 	var td2 = document.createElement('TD')
+		// 	var td3 = document.createElement('TD')
+		// 	var input = document.createElement('INPUT')
+
+		// 	input.setAttribute('name', 'name')
+		// 	td1.innerHTML = "Child's Name <br>(as per IC)"
+		// 	td2.innerHTML = ":"
+		// 	td3.appendChild(input)
+
+		// 	tr.appendChild(td1)
+		// 	tr.appendChild(td2)
+		// 	tr.appendChild(td3)
+
+		// 	tableBody.appendChild(tr)
+		// }
+
+		function confirmBooking() {
+			if (selectedSeats.length < 1) {
+				alert('Please choose your seats.')
+				return;
+			}
+			changeDisplay(loadingDiv, 'block')
+			const data = {
+				parentsNames: parentsNames,
+				// childrensNames: childrensNames,
+				childsName: childsName,
+				selectedSeats: selectedSeats,
+				email: document.getElementsByName('email')[0].value,
+				cubscentre: document.getElementsByName('cubscentre')[0].value
+			};
+			console.log(data);
+			// return;
+			fetch(databaseLink + '/api/new-booking', {
+				method: 'POST', // or 'PUT'
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			})
+				.then(response => response.json())
+				.then(data => {
+					console.log('Success:', data);
+
+					alert(data.message)
+					if (data.error == "false") {
+						window.location.href = 'thankyoupage.html'
+					} else {
+						sessionStorage.setItem("parentsNames", parentsNames)
+						// sessionStorage.setItem("childrensNames", childrensNames)
+						sessionStorage.setItem("childsName", childsName)
+						sessionStorage.setItem("email", document.getElementsByName('email')[0].value)
+						sessionStorage.setItem("cubscentre", document.getElementsByName('cubscentre')[0].value)
+						sessionStorage.setItem("repeater", "true")
+						location.reload();
+					}
+				})
+				.catch((error) => {
+					console.error('Error:', error);
+					alert('Please notify admin');
+					changeDisplay(loadingDiv, 'none');
+				});
+		}
+
+		function alreadyBooked() {
+			alert('Seat already booked. Please choose from the available ones (gold)');
+		}
+
+		function ValidateEmail(input) {
+			var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+			if (input.value.match(validRegex)) {
+				return "true";
+			} else {
+				alert("Please enter valid Email address! Confirmation of seat booking will be emailed to you.");
+				return "false";
+			}
+
+		}
+	</script>
+</body>
+
+</html>

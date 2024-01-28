@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="script.js"></script>
+	<title>ADMIN VIEW</title>
+</head>
+<body>
+	<div class="loading" id="loadingDiv">
+		<img src="loading.gif">
+	</div>
+
+	<div class="deleteConfirmationModal" id="deleteConfirmationModal">
+		<div class="deleteConfirmationModalContent border">
+			<div>
+				<p>Are you sure you want to delete this?</p>
+				<button class="contactInfoDivPageSlctSeatBtn" onclick="closeModal()">No</button>
+				<button class="contactInfoDivPageSlctSeatBtn" onclick="deleteBookingFunc()">Yes</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="mainDiv">
+		<table>
+			<thead id="adminTableHead">
+				<tr>
+					<td>Seat</td>
+					<td>Parents</td>
+					<td>Children</td>
+					<td>Centre</td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody id="adminTableBody">
+				
+			</tbody>
+		</table>
+	</div>
+
+
+<script type="text/javascript">
+	var databaseLink = databaseLink();
+	var token = sessionStorage.getItem('token');
+	if(!token){
+		window.location.replace("adminLogin.html")
+	}
+
+	var bookingID = 0;
+	var deleteConfirmationModal = document.getElementById('deleteConfirmationModal')
+
+	function getData(){
+		changeDisplay(loadingDiv, 'block')
+		const data = {
+			token: token
+		}
+
+		fetch(databaseLink+'/api/admin-seat-view', {
+			method: 'POST', // or 'PUT'
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log('Success:', data);
+			changeDisplay(loadingDiv, 'none')
+			if(data.error == "true"){
+				sessionStorage.removeItem('token');
+				window.location.replace("adminLogin.html")
+			}else{
+				var data = data.data
+				var adminTableBody = document.getElementById('adminTableBody')
+				adminTableBody.innerHTML = ""
+
+				var odd = true;
+				for(var i=0; i<data.length; i++){
+					var insideData = data[i]
+
+					var tr = document.createElement('TR')
+					var td1 = document.createElement('TD')
+					var td2 = document.createElement('TD')
+					var td3 = document.createElement('TD')
+					var td4 = document.createElement('TD')
+					var deleteBtn = document.createElement('BUTTON')
+
+					var td5 = document.createElement('TD')
+
+					deleteBtn.textContent = "Delete"
+					deleteBtn.setAttribute('onclick', 'setBookingID(this)');
+
+					tr.setAttribute('id', i)
+					var guests = "null"
+					if(insideData.seat1 != null || insideData.seat2 != null){						
+						if(insideData.seat1 != null){
+							guests = insideData.seat1.guests
+							td5.innerHTML = insideData.seat1.cubscentre
+						}else{
+							guests = insideData.seat2.guests
+							td5.innerHTML = insideData.seat2.cubscentre
+						}
+						var parentsUL = document.createElement('UL')
+						var childrensUL = document.createElement('UL')
+
+						for(var a=0; a<guests.length; a++){
+							var li = document.createElement('LI')
+							li.textContent = guests[a].name
+
+							if(guests[a].category == "parent"){
+								parentsUL.appendChild(li)
+							}else{
+								childrensUL.appendChild(li)
+							}
+						}
+						td2.appendChild(parentsUL)
+						td3.appendChild(childrensUL)
+
+					}else{
+						tr.setAttribute('style', 'background-color: #7FFFD4')
+					}
+					td1.innerHTML = insideData.seat_num		
+					
+					if(odd == true){
+
+						if(insideData.seat1 != null){
+							deleteBtn.setAttribute('id', insideData.seat1.id)
+							td4.appendChild(deleteBtn)
+						}
+						if(insideData.seat2 != null){
+							deleteBtn.setAttribute('id', insideData.seat2.id)
+							td4.appendChild(deleteBtn)
+						}
+
+						td2.setAttribute('rowspan', 2);
+						td3.setAttribute('rowspan', 2);
+						td4.setAttribute('rowspan', 2);
+						td5.setAttribute('rowspan', 2);
+
+						tr.appendChild(td1)
+						tr.appendChild(td2)
+						tr.appendChild(td3)
+						tr.appendChild(td5)
+						tr.appendChild(td4)						
+
+						odd = false;
+					}else{
+						tr.appendChild(td1)
+
+						odd = true;
+					}
+
+					adminTableBody.appendChild(tr)
+				}
+			}
+		})
+		.catch((error) => {
+			console.error('Error:', error);
+			changeDisplay(loadingDiv, 'none')
+		});
+	}getData();
+
+
+	function setBookingID(ele){
+		bookingID = ele.id
+		changeDisplay(deleteConfirmationModal, 'block')
+	}
+
+
+	function deleteBookingFunc(){
+		changeDisplay(loadingDiv, 'block')
+		const data = {
+			token: token,
+			bookingID: bookingID
+		}
+
+		fetch(databaseLink+'/api/delete-booking', {
+			method: 'POST', // or 'PUT'
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log('Success:', data);
+			if(data.error == "false"){
+				alert(data.message);
+				getData();
+				closeModal();
+			}
+		})
+		.catch((error) => {
+			console.error('Error:', error);
+		});
+	}
+
+
+	function closeModal(){		
+		changeDisplay(deleteConfirmationModal, 'none')
+	}
+
+
+</script>
+</body>
+</html>

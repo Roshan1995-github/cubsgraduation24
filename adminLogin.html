@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="script.js"></script>
+	<title>ADMIN LOGIN</title>
+</head>
+<body>
+	<div class="loading" id="loadingDiv">
+		<img src="loading.gif">
+	</div>
+	
+	<div class="adminLoginDiv">
+		<img src="logo.png">
+		<p>Username</p><input type="text" name="username">
+		<p>Password</p><input type="password" name="password">
+		<button onclick="loginFunc()" class="contactInfoDivPageSlctSeatBtn" style="margin: 50px auto;">Login</button>
+	</div>
+
+
+<script type="text/javascript">
+	var databaseLink = databaseLink();
+
+	function loginFunc(){
+		changeDisplay(loadingDiv, 'block')
+		var username = document.getElementsByName('username')[0].value
+		var password = document.getElementsByName('password')[0].value
+
+		const data = {
+			username: username,
+			password: password
+		}
+
+
+		fetch(databaseLink+'/api/admin-login', {
+			method: 'POST', // or 'PUT'
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		})
+		.then(response => response.json())
+		.then(data => {
+			console.log('Success:', data);
+
+			if(data.error == "false"){
+				sessionStorage.setItem("token", data.token)
+				window.location.replace("adminView.html")
+			}else{		
+				changeDisplay(loadingDiv, 'none')		
+				alert(data.message)
+			}
+		})
+		.catch((error) => {
+			console.error('Error:', error);
+		});
+	}
+</script>
+</body>
+</html>

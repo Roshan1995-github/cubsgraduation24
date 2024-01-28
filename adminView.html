@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="script.js"></script>
+	<title>ADMIN VIEW</title>
+</head>
+
+<body>
+	<div class="loading" id="loadingDiv">
+		<img src="loading.gif">
+	</div>
+
+
+	<div class="modal1" id="infoModal">
+		<div class="contactInfoDiv border">
+			<img src="logo.png">
+			<table>
+				<tbody id="tableBody">
+					<tr>
+						<td>Parent 1 Name <br>(as per IC)</td>
+						<td>:</td>
+						<td><input type="text" name="name" id="parent1"></td>
+					</tr>
+					<tr>
+						<td>Parent 2 Name <br>(as per IC)</td>
+						<td>:</td>
+						<td><input type="text" name="name" id="parent2"></td>
+					</tr>
+					<tr>
+						<td>Email</td>
+						<td>:</td>
+						<td><input type="text" name="email"></td>
+					</tr>
+					<tr>
+						<td>Centre</td>
+						<td>:</td>
+						<td><input type="text" name="cubscentre"></td>
+					</tr>
+					<tr>
+						<td>Child's Name <br>(as per IC)</td>
+						<td>:</td>
+						<td><input type="text" name="name"></td>
+					</tr>
+				</tbody>
+			</table>
+			<button onclick="closeDiv()" class="contactInfoDivPageSlctSeatBtn">CANCEL</button>
+			<button onclick="saveChangesFunc()" class="contactInfoDivPageSlctSeatBtn">SAVE</button>
+		</div>
+	</div>
+
+
+	<div class="deleteConfirmationModal" id="deleteConfirmationModal">
+		<div class="deleteConfirmationModalContent border">
+			<div>
+				<p>Are you sure you want to delete this?</p>
+				<button class="contactInfoDivPageSlctSeatBtn" onclick="closeModal()">No</button>
+				<button class="contactInfoDivPageSlctSeatBtn" onclick="deleteBookingFunc()">Yes</button>
+			</div>
+		</div>
+	</div>
+
+	<div class="mainDiv">
+		<table>
+			<thead id="adminTableHead">
+				<tr>
+					<td>Seat</td>
+					<td>Parents</td>
+					<td>Children</td>
+					<td>Centre</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td colspan="5" style="padding: 1px; background-color: black;"></td>
+				</tr>
+			</thead>
+			<tbody id="adminTableBody">
+
+			</tbody>
+		</table>
+	</div>
+
+
+	<script type="text/javascript">
+		var databaseLink = databaseLink();
+		var token = sessionStorage.getItem('token');
+		if (!token) {
+			window.location.replace("adminLogin.html")
+		}
+
+		var mainData = ""
+		var bookingID = 0;
+		var deleteConfirmationModal = document.getElementById('deleteConfirmationModal')
+		var modal1 = document.getElementById('infoModal');
+		var loadingDiv = document.getElementById('loadingDiv');
+
+		function getData() {
+			changeDisplay(loadingDiv, 'block')
+			const data = {
+				token: token
+			}
+
+			fetch(databaseLink + '/api/seats-bookings', {
+				method: 'POST', // or 'PUT'
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			})
+				.then(response => response.json())
+				.then(data => {
+					// console.log('Success:', data);
+					changeDisplay(loadingDiv, 'none')
+					if (data.error == "true") {
+						sessionStorage.removeItem('token');
+						window.location.replace("adminLogin.html")
+					} else {
+						mainData = data.seats
+						var data = data.seats
+						var adminTableBody = document.getElementById('adminTableBody')
+						adminTableBody.innerHTML = ""
+
+						var odd = true;
+						console.log(data)
+						for (var i = 0; i < data.length; i++) {
+							var insideData = data[i]
+
+							var tr = document.createElement('TR')
+							var td1 = document.createElement('TD')
+							var td2 = document.createElement('TD')
+							var td3 = document.createElement('TD')
+							var td4 = document.createElement('TD')
+							var td5 = document.createElement('TD')
+
+							td1.innerHTML = insideData.seat_num
+							tr.appendChild(td1)
+
+							td2.innerHTML = insideData.guest_name
+							tr.appendChild(td2)
+
+							if (insideData.seat1 != null) {
+								var deleteBtn = document.createElement('BUTTON')
+								deleteBtn.textContent = "Delete"
+								deleteBtn.setAttribute('onclick', 'setBookingID(this)');
+
+								deleteBtn.setAttribute('id', insideData.seat1.id)
+								td3.innerHTML = insideData.seat1.child_name
+								td4.innerHTML = insideData.seat1.cubscentre
+								td5.appendChild(deleteBtn)
+
+							}
+
+							tr.setAttribute('id', i)
+							// tr.setAttribute('onclick', 'openDiv(this)')
+							if (odd == true) {
+								td3.setAttribute('rowspan', 2);
+								td4.setAttribute('rowspan', 2);
+								td5.setAttribute('rowspan', 2);
+
+								tr.appendChild(td3)
+								tr.appendChild(td4)
+								tr.appendChild(td5)
+								adminTableBody.appendChild(tr)
+								odd = false;
+							} else {
+								adminTableBody.appendChild(tr)
+								var extraTR = document.createElement('TR')
+								var extraTD = document.createElement('TD')
+								extraTD.setAttribute('colspan', 5);
+								extraTD.setAttribute('style', 'padding: 5px; background-color: black;')
+								extraTR.appendChild(extraTD)
+								adminTableBody.appendChild(extraTR)
+
+								odd = true;
+							}
+							tr.setAttribute('style', 'background-color: #7FFFD4')
+						}
+					}
+				})
+				.catch((error) => {
+					console.error('Error:', error);
+					changeDisplay(loadingDiv, 'none')
+				});
+		} getData();
+
+
+		function setBookingID(ele) {
+			bookingID = ele.id
+			changeDisplay(deleteConfirmationModal, 'block')
+		}
+
+
+		function deleteBookingFunc() {
+			changeDisplay(loadingDiv, 'block')
+			const data = {
+				token: token,
+				bookingID: bookingID
+			}
+
+			fetch(databaseLink + '/api/delete-booking', {
+				method: 'POST', // or 'PUT'
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			})
+				.then(response => response.json())
+				.then(data => {
+					console.log('Success:', data);
+					if (data.error == "false") {
+						alert(data.message);
+						getData();
+						closeModal();
+					}
+				})
+				.catch((error) => {
+					console.error('Error:', error);
+				});
+		}
+
+
+		function closeModal() {
+			changeDisplay(deleteConfirmationModal, 'none')
+		}
+		function openDiv(env) {
+			changeDisplay(modal1, 'block')
+			var insideData = mainData[env.id]
+			console.log(insideData)
+
+			if (insideData.seat1 != null) {
+				// guests = insideData.seat1.guests
+				document.getElementsByName('name')[0].value = insideData.guest_name
+				document.getElementsByName('name')[1].value = mainData[parseInt(env.id) + 1].guest_name
+				document.getElementsByName('email')[0].value = insideData.seat1.email
+				document.getElementsByName('cubscentre')[0].value = insideData.seat1.cubscentre
+				document.getElementsByName('name')[2].value = insideData.seat1.child_name
+				bookingID = insideData.seat1.id
+			} else {
+				document.getElementsByName('name')[0].value = insideData.guest_name
+				document.getElementsByName('name')[1].value = mainData[parseInt(env.id) + 1].guest_name
+				document.getElementsByName('email')[0].value = ""
+				document.getElementsByName('cubscentre')[0].value = ""
+				document.getElementsByName('name')[2].value = ""
+				bookingID = 0
+			}
+		}
+		function closeDiv() {
+			changeDisplay(modal1, 'none')
+		}
+
+
+		function saveChangesFunc() {
+			changeDisplay(loadingDiv, 'block')
+			closeDiv()
+			if (document.getElementsByName('name')[0].value == "") {
+				alert('Parent name 1 cannot be empty');
+				return;
+			}
+			if (document.getElementsByName('name')[1].value == "") {
+				alert('Parent name 2 cannot be empty');
+				return;
+			}
+			if (document.getElementsByName('email')[0].value == "") {
+				alert('Email cannot be empty');
+				return;
+			}
+			if (document.getElementsByName('cubscentre')[0].value == "") {
+				alert('Centre cannot be empty');
+				return;
+			}
+			if (document.getElementsByName('name')[2].value == "") {
+				alert('Child cannot be empty');
+				return;
+			}
+
+			var parentsNames = [];
+			var childrensNames = [];
+
+			for (var i = 0; i < 2; i++) {
+				var name = document.getElementsByName('name')[i].value
+				parentsNames.push(name)
+			}
+			for (var j = i; j < document.getElementsByName('name').length; j++) {
+				var name = document.getElementsByName('name')[j].value
+				childrensNames.push(name)
+			}
+			console.log(parentsNames)
+			console.log(childrensNames)
+
+			const data = {
+				token: token,
+				bookingID: bookingID,
+				parentsNames: parentsNames,
+				childrensNames: childrensNames,
+				email: document.getElementsByName('email')[0].value,
+				cubscentre: document.getElementsByName('cubscentre')[0].value
+			};
+			console.log(data)
+
+			fetch(databaseLink + '/api/save-changes', {
+				method: 'POST', // or 'PUT'
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			})
+				.then(response => response.json())
+				.then(data => {
+					console.log('Success:', data);
+
+					if (data.error == "false") {
+						getData()
+						alert("changes saved")
+					}
+				})
+				.catch((error) => {
+					console.error('Error:', error);
+					changeDisplay(modal1, 'block')
+				});
+		}
+
+
+	</script>
+</body>
+
+</html>

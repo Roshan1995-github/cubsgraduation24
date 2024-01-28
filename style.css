@@ -1,0 +1,686 @@
+.border {
+  border: solid black 1px;
+}
+
+body {
+  /* background-color: whitesmoke; */
+  background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+    radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%)
+    /* background: url('background1.png');
+  background-size: cover; */
+}
+
+table {
+  width: 85%;
+  margin: 0px auto;
+}
+
+td {
+  font-size: 25px;
+  padding: 20px 0px;
+}
+
+td>input {
+  width: 96%;
+  font-size: 25px;
+}
+
+td:nth-child(1) {
+  width: 28%;
+  text-align: left;
+}
+
+td:nth-child(2) {
+  width: 2%;
+}
+
+td:nth-child(3) {
+  width: 70%;
+}
+
+.mainDiv {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.info {
+  border: solid black 1px;
+  border-radius: 10px;
+  width: 250px;
+  padding: 10px;
+  /* background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+  radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%) */
+  background-color: white;
+  /*  position: -webkit-sticky; /* Safari */
+
+  /*  position: sticky;*/
+  /*  top: 8px;*/
+}
+
+.info>p {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.info>div {
+  padding: 0px 10px;
+  font-size: 25px;
+}
+
+.chart {
+  position: relative;
+  width: 1200px;
+  height: 1260px;
+  background-color: white;
+  /* background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+    radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%); */
+  padding-top: 20px;
+}
+
+.stage {
+  border: solid red 3px;
+  border-radius: 10px;
+  width: 800px;
+  height: 200px;
+  margin-left: 200px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.redCarpetV {
+  border: solid red 1px;
+  position: absolute;
+  left: 565px;
+  width: 100px;
+  height: 1050px;
+  background-color: red;
+}
+
+.redCarpetH {
+  display: none;
+  border: solid red 1px;
+  position: absolute;
+  top: 1185px;
+  left: 350px;
+  width: 200px;
+  height: 90px;
+  background-color: red;
+  text-align: right;
+  z-index: 1;
+}
+
+.redCarpetH>p {
+  font-size: 30px;
+  padding-top: 0px;
+  padding-right: 20px;
+  color: white;
+  font-weight: bold;
+}
+
+.tableDiv1 {
+  position: absolute;
+  top: 380px;
+  left: 670px;
+}
+
+.tableDiv2 {
+  position: absolute;
+  top: 540px;
+  left: 670px;
+}
+
+.tableDiv3 {
+  position: absolute;
+  top: 700px;
+  left: 670px;
+}
+
+.tableDiv4 {
+  position: absolute;
+  top: 860px;
+  left: 670px;
+}
+
+.tableDiv5 {
+  position: absolute;
+  /* top: 330px;
+  left: 850px; */
+  top: 575px;
+  left: 1030px;
+}
+
+.tableDiv6 {
+  position: absolute;
+  /* top: 490px;
+  left: 850px; */
+  top: 810px;
+  left: 850px;
+}
+
+.tableDiv7 {
+  position: absolute;
+  top: 650px;
+  left: 850px;
+}
+
+.tableDiv8 {
+  position: absolute;
+  /* top: 810px;
+  left: 850px; */
+  top: 490px;
+  left: 850px;
+}
+
+.tableDiv9 {
+  position: absolute;
+  /* top: 415px;
+  left: 1030px; */
+  top: 330px;
+  left: 850px;
+}
+
+.tableDiv10 {
+  position: absolute;
+  /* top: 575px;
+  left: 1030px; */
+  top: 415px;
+  left: 1030px;
+}
+
+.tableDiv11 {
+  position: absolute;
+  top: 380px;
+  left: 375px;
+}
+
+.tableDiv12 {
+  position: absolute;
+  top: 540px;
+  left: 375px;
+}
+
+.tableDiv13 {
+  position: absolute;
+  top: 700px;
+  left: 375px;
+}
+
+.tableDiv14 {
+  position: absolute;
+  top: 860px;
+  left: 375px;
+}
+
+.tableDiv15 {
+  position: absolute;
+  top: 330px;
+  left: 195px;
+}
+
+.tableDiv16 {
+  position: absolute;
+  top: 490px;
+  left: 195px;
+}
+
+.tableDiv17 {
+  position: absolute;
+  top: 650px;
+  left: 195px;
+}
+
+.tableDiv18 {
+  position: absolute;
+  top: 810px;
+  left: 195px;
+}
+
+.tableDiv19 {
+  position: absolute;
+  top: 735px;
+  left: 15px;
+}
+
+.tableDiv20 {
+  position: absolute;
+  top: 415px;
+  left: 15px;
+}
+
+.tableDiv21 {
+  position: absolute;
+  top: 575px;
+  left: 15px;
+}
+
+.table {
+  border: solid black 3px;
+  position: absolute;
+  top: 35px;
+  left: 50px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #5d4a1f;
+  color: white;
+}
+
+.tableID {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 30px;
+}
+
+.stageid {
+  font-size: 50px;
+}
+
+.seat {
+  border: solid black 3px;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: darkred;
+}
+
+.seat1 {
+  top: 11px;
+  left: 62px;
+}
+
+.seat2 {
+  top: 32px;
+  left: 32px;
+}
+
+.seat3 {
+  top: 65px;
+  left: 23px;
+}
+
+.seat4 {
+  top: 98px;
+  left: 32px;
+}
+
+.seat5 {
+  top: 118px;
+  left: 62px;
+}
+
+.seat6 {
+  top: 118px;
+  left: 98px;
+}
+
+.seat7 {
+  top: 98px;
+  left: 128px;
+}
+
+.seat8 {
+  top: 65px;
+  left: 138px;
+}
+
+.seat9 {
+  top: 32px;
+  left: 128px;
+}
+
+.seat10 {
+  top: 11px;
+  left: 98px;
+}
+
+
+
+
+
+/* The Modal (background) */
+.modal {
+  display: block;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 3;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: #B22222;
+  background: url('background1.png');
+  background-size: cover;
+}
+
+.modal1 {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 3;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: #B22222;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  /* Could be more or less, depending on screen size */
+}
+
+
+.loading {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.loading>img {
+  display: block;
+  width: 200px;
+  margin: 230px auto;
+}
+
+
+
+
+
+/*===========================================contactInfoPage===================================================*/
+.contactInfoDiv {
+  width: 50%;
+  min-width: 550px;
+  border-radius: 10px;
+  margin: 5px auto;
+  min-height: 600px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  text-align: center;
+  background: radial-gradient(ellipse farthest-corner at right bottom, #FEDB37 0%, #FDB931 8%, #9f7928 30%, #8A6E2F 40%, transparent 80%),
+    radial-gradient(ellipse farthest-corner at left top, #FFFFFF 0%, #FFFFAC 8%, #D1B464 25%, #5d4a1f 62.5%, #5d4a1f 100%)
+}
+
+.contactInfoDiv>img {
+  width: 30%;
+}
+
+.contactInfoDivPageSlctSeatBtn {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #FFD700 0%, #000000 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  margin-top: 30px;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow .15s, transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+}
+
+.contactInfoDivPageSlctSeatBtn:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.contactInfoDivPageSlctSeatBtn:hover {
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.contactInfoDivPageSlctSeatBtn:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.imgLogo {
+  display: block;
+  width: 80%;
+  margin: 0px auto;
+}
+
+.goldText {
+  width: 100%;
+  text-align: center;
+
+}
+
+.stagefont {
+  font-size: 100px;
+}
+
+
+
+
+
+
+
+
+/*===========================================adminTable Page===================================================*/
+
+.adminLoginDiv {
+  width: 400px;
+  min-width: 400px;
+  border-radius: 10px;
+  margin: 2% auto;
+  height: 600px;
+  padding: 30px;
+  background-color: #FFEBCD;
+}
+
+.adminLoginDiv>img {
+  display: block;
+  width: 50%;
+  margin: 0px auto;
+  margin-bottom: 100px;
+}
+
+.adminLoginDiv>p {
+  width: 90%;
+  font-size: 20px;
+}
+
+.adminLoginDiv>input {
+  display: block;
+  width: 90%;
+  font-size: 20px;
+}
+
+.adminLoginDiv>button {
+  display: block;
+  width: 100px;
+  font-size: 20px;
+}
+
+
+
+
+
+
+
+
+/*===========================================adminTable Page===================================================*/
+
+#adminTableHead>tr>td {
+  border: solid black 4px;
+  text-align: center;
+  background-color: #FFEBCD;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#adminTableBody>tr {
+  background-color: #FFEBCD;
+}
+
+#adminTableBody>tr:hover {
+  background-color: coral;
+}
+
+#adminTableBody>tr>td {
+  border: solid black 1px;
+}
+
+#adminTableHead>tr>td:nth-child(1),
+#adminTableBody>tr>td:nth-child(1) {
+  width: 10%;
+  text-align: center;
+}
+
+#adminTableHead>tr>td:nth-child(2),
+#adminTableBody>tr>td:nth-child(2) {
+  width: 30%;
+}
+
+#adminTableHead>tr>td:nth-child(3),
+#adminTableBody>tr>td:nth-child(3) {
+  width: 30%;
+}
+
+#adminTableHead>tr>td:nth-child(4),
+#adminTableBody>tr>td:nth-child(4) {
+  width: 20%;
+  text-align: center;
+}
+
+#adminTableHead>tr>td:nth-child(5),
+#adminTableBody>tr>td:nth-child(5) {
+  width: 10%;
+  text-align: center;
+}
+
+.adminMainDiv {
+  width: 100%;
+}
+
+
+.deleteConfirmationModal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: white;
+  opacity: 0.95;
+}
+
+/* Modal Content/Box */
+.deleteConfirmationModalContent {
+  margin: 15% auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  background-color: #B22222;
+  width: 100%;
+  /* Could be more or less, depending on screen size */
+}
+
+.deleteConfirmationModalContent>div {
+  margin: 0px auto;
+  /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 10px;
+  background-color: #FFEBCD;
+  width: 300px;
+  /* Could be more or less, depending on screen size */
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+
+
+
+
+/*===========================================thankyou Page===================================================*/
+
+.thankyouDiv {
+  text-align: center;
+  font-size: 50px;
+  font-weight: bold;
+  margin-top: 300px;
+  color: #FFD700;
+}
+
+
+
+
+
+
+
+
+@media(max-width: 1300px) {
+  .mainDiv {
+    flex-direction: column;
+  }
+
+  .info {
+    margin: 10px auto;
+  }
+
+  .chart {
+    margin: 10px auto;
+  }
+}
